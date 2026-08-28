@@ -16,26 +16,36 @@ Avoid long narrative summaries, repeated context, restating specifications alrea
 
 Use Least Context and Just-in-Time Context principles. Agents should not decide their own verbosity when the caller can define the required output shape.
 
-## Common Input Contract
+## Orchestration Metadata and Execution Context
 
-Every Agent Run receives a logical input envelope. The physical format is intentionally undefined.
+Every Agent Run has logical orchestration metadata and an execution context. The physical format is intentionally undefined.
 
-When applicable, input contains:
+Orchestration metadata may include:
 
-- execution identifier;
-- task identifier;
+- execution ID;
 - agent role;
+- execution class;
+- selected model;
+- reasoning effort;
+- runtime configuration.
+
+This metadata belongs primarily to the orchestration and runtime layer. The Root Engineering Copilot selects the configuration for Lead Engineer executions. The Lead Engineer selects the configuration for Specialist executions. The executing agent runs under that configuration; it must not receive orchestration metadata merely because it exists.
+
+The execution context contains only what the agent needs to perform the work. When applicable, it includes:
+
+- task identifier;
 - objective;
 - scope and out of scope;
 - acceptance criteria;
-- relevant technical context;
+- relevant specification;
+- repository instructions;
+- relevant contracts;
 - applicable constraints;
-- relevant artifact references;
-- expected output;
-- execution class;
-- assigned model and reasoning configuration.
+- artifact references;
+- validation requirements;
+- expected output.
 
-Optional information is included only when required, such as dependencies, technical contracts, validation requirements, allowed tools or authenticated capabilities, known blockers, and repository-specific instructions.
+Optional context is included only when required, such as dependencies, allowed tools or authenticated capabilities, or known blockers. Do not expose orchestration metadata to an agent as ordinary task content.
 
 ## Expected Output Contract
 
@@ -113,7 +123,7 @@ Agents return conclusions, decisions, evidence, artifacts, risks, blockers, and 
 
 ### Typical Input
 
-When applicable: Atomic Task, relevant Technical Specification, acceptance criteria, repository memory, relevant contracts, validation requirements, and execution configuration.
+When applicable: Atomic Task, relevant Technical Specification, acceptance criteria, repository memory, relevant contracts, validation requirements, and the context required for the assigned work.
 
 ### Typical Successful Output
 
@@ -310,24 +320,43 @@ Questions must not be escalated without enough information for the decision make
 
 ## Reclassification Contract
 
-When a Specialist determines that its assigned configuration is insufficient:
+When a Specialist determines that its current execution is insufficient:
 
 ```text
 NEEDS_RECLASSIFICATION
 
-Assigned:
-<execution class, model, reasoning>
-
 Reason:
 <concise diagnosed reason>
 
-Suggested:
-<recommended class or configuration when appropriate>
+Relevant artifacts:
+<references when applicable>
 ```
 
-The Specialist must not change its own configuration. The Lead Engineer decides Specialist reclassification.
+The Specialist does not need to know or report its exact execution class, model, or reasoning effort. It should not prescribe a stronger model unless there is a specific useful reason to recommend one. The Lead Engineer already owns the Specialist execution metadata and decides Specialist reclassification.
 
-When the Lead Engineer determines that its own configuration is insufficient, it uses the same structure with `Current` instead of `Assigned`, then returns control to the Root Engineering Copilot. The Copilot decides Lead Engineer reclassification.
+When the Lead Engineer determines that its current execution requires reassessment:
+
+```text
+NEEDS_RECLASSIFICATION
+
+Reason:
+<concise evidence that the current execution requires reassessment>
+
+Relevant artifacts:
+<references when applicable>
+```
+
+The Lead Engineer does not need to report exact execution metadata. It returns control to the Root Engineering Copilot, which owns Lead execution metadata and decides whether to increase reasoning, change model, correct context, replan, or take another appropriate action.
+
+### Reclassification Context
+
+Reclassification starts a new isolated Agent Run. The new run must not inherit the previous agent's private conversation or reasoning. Continuity comes from the same task, persistent artifacts, useful findings, evidence, concise structured handoff, and relevant current repository context.
+
+Conceptually:
+
+Agent Run A -> NEEDS_RECLASSIFICATION -> useful findings persist -> run ends
+
+Routing authority reclassifies -> Agent Run B starts with new runtime configuration -> required task context and useful persisted results are delivered
 
 ## Blocked Contract
 
@@ -388,4 +417,3 @@ Private execution context does not automatically propagate. Persistent artifacts
 The initial framework optimizes communication for low token overhead, high actionability, context isolation, traceability, deterministic parsing when possible, easy orchestration, and minimal duplication.
 
 More text is not higher-quality communication unless the additional information is necessary for the next decision or execution.
-
