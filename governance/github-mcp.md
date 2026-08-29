@@ -42,13 +42,12 @@ Secure capability, never credentials. Authentication secrets and resulting acces
 
 ## Least Capability
 
-Do not expose every GitHub MCP tool by default. The initial intended toolsets are limited to:
+Do not expose every GitHub MCP tool by default. The approved initial toolsets are limited to:
 
-- context;
 - issues;
 - projects.
 
-Additional toolsets, including pull requests, actions, code security, and repository administration, require a later approved workflow. Use Least Capability + Least Context.
+The `context` toolset is optional and may be enabled only when a demonstrated approved workflow requires capability not provided by `issues,projects`. Do not enable it merely because it is part of a server default. Additional toolsets, including pull requests, actions, code security, and repository administration, require a later approved workflow. Use Least Capability + Least Context.
 
 ## GitHub Projects and Atomic Tasks
 
@@ -88,23 +87,15 @@ Integration failure is not permission to create temporary repository progress fi
 
 ## Initial Validation Spike
 
-GitHub MCP is not considered operational until a dedicated validation spike confirms:
+GitHub MCP initial technical validation: PASS.
 
-1. Codex can start and communicate with the official GitHub MCP Server;
-2. OAuth authentication works without credentials entering agent context;
-3. the authenticated GitHub identity can be determined;
-4. Issues can be read;
-5. GitHub Projects can be read;
-6. an approved test Issue can be created or updated;
-7. an approved Project item can be updated when a suitable Project exists;
-8. unavailable or unapproved toolsets remain outside the intended capability surface;
-9. write approval behavior operates as intended.
+The validated scope is the official GitHub MCP Server over STDIO with OAuth, the `issues,projects` minimum toolset, Codex invocation, Issues reads and writes, Projects reads, write approval behavior, and the approved security boundary. Project write validation remains deferred until an appropriate Project item exists.
 
-The spike should use disposable or test operational data where possible. It is separate work and is not executed by this document.
+The validation spike used controlled test data where appropriate. It establishes technical MCP readiness; it does not implement the GitHub operational workflow.
 
 ## Implementation Status
 
-This document defines governance only. GitHub MCP installation, configuration, Codex configuration, OAuth authorization, and the validation spike are separate implementation work and must not be assumed to exist.
+This document defines governance only. GitHub MCP has passed initial technical validation, but the GitHub operational workflow remains future work. That work includes GitHub Project design, Project fields, Issue structure and templates, Product Requirement / Feature / Atomic Task mapping, workflow states, task publication rules, operational automation, and rules for routine automatic writes.
 
 ## Relationship With Existing Governance
 
@@ -119,4 +110,3 @@ GitHub MCP must operate consistently with the principles, orchestration, task li
 - `governance/tooling-strategy.md`.
 
 Detailed policies remain owned by those documents.
-
