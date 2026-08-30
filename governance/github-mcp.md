@@ -89,9 +89,9 @@ Integration failure is not permission to create temporary repository progress fi
 
 GitHub MCP initial technical validation: PASS.
 
-The validated scope is the official GitHub MCP Server over STDIO with OAuth, the `issues,projects` minimum toolset, Codex invocation, Issues reads and writes, Projects reads, write approval behavior, and the approved security boundary. Project write validation remains deferred until an appropriate Project item exists.
+The validated scope is the official GitHub MCP Server over STDIO with OAuth, the `issues,projects` minimum toolset, Codex invocation, Issues reads and writes, Projects reads and writes, write approval behavior, and the approved security boundary. Project write validation used the authorized disposable test repository.
 
-The validation spike used controlled test data where appropriate. It establishes technical MCP readiness; it does not implement the GitHub operational workflow.
+The validation spike used controlled test data where appropriate. Project and Issue writes, existing-field assignment, native sub-issue relationships, and operational reconstruction were subsequently validated with the authorized disposable test repository. Custom Project field creation remains a one-time manual setup requirement. These validations establish technical MCP readiness; they do not implement the GitHub operational workflow.
 
 ## Implementation Status
 
