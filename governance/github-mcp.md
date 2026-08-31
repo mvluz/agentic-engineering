@@ -51,7 +51,7 @@ The `context` toolset is optional and may be enabled only when a demonstrated ap
 
 ## GitHub Projects and Atomic Tasks
 
-GitHub Issues / GitHub Projects are intended to represent operational work state. Future GitHub Workflow governance will define Project structure, fields, statuses, Product Requirement, Feature, Atomic Task, Issue and Pull Request relationships, and task ordering. Those details are not defined here.
+GitHub Issues / GitHub Projects represent operational work state. [governance/github-workflow.md](github-workflow.md) defines the approved hierarchy, Project fields, statuses, task materialization, and ordering rules. This document retains MCP capability, ownership, and security boundaries.
 
 Atomic Tasks derived from the approved Technical Specification and Implementation Plan should eventually become operational work items after the Consistency Gate passes:
 
@@ -95,7 +95,7 @@ The validation spike used controlled test data where appropriate. Project and Is
 
 ## Implementation Status
 
-This document defines governance only. GitHub MCP has passed initial technical validation, but the GitHub operational workflow remains future work. That work includes GitHub Project design, Project fields, Issue structure and templates, Product Requirement / Feature / Atomic Task mapping, workflow states, task publication rules, operational automation, and rules for routine automatic writes.
+This document defines governance only. GitHub MCP has passed technical validation for the approved V1 operational capabilities, and [governance/github-workflow.md](github-workflow.md) defines the GitHub operational workflow. Tooling implementation, automation, and rules for routine automatic writes remain future work.
 
 ## Relationship With Existing Governance
 

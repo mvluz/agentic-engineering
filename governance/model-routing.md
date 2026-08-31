@@ -105,7 +105,7 @@ If an agent discovers that its assigned class or configuration is insufficient b
 
 For example, an E2 Terra / Medium execution that discovers unexpected architectural complexity is stopped, escalated, reclassified as E3, and restarted with Terra / High. Promotion remains visible and traceable.
 
-If the Lead Engineer determines that its own configuration is insufficient, it reports `MODEL_CLASS_MISMATCH` to the Root Engineering Copilot. The Copilot reclassifies the work and starts a new Lead execution. Specialists use the same principle by reporting to the Lead Engineer.
+If the Lead Engineer determines that its own configuration is insufficient, it reports `NEEDS_RECLASSIFICATION` to the Root Engineering Copilot. The Copilot reclassifies the work and starts a new Lead execution. Specialists use the same principle by reporting to the Lead Engineer.
 
 ## Controlled Sol Promotion
 
@@ -135,4 +135,4 @@ Telemetry storage and token accounting are intentionally undefined here.
 
 ## Implementation Note
 
-The framework intends to configure specialist executions with the model and reasoning level associated with their assigned class. The exact Codex implementation mechanism will be validated later through a dedicated technical spike. Model-routing behavior must not be considered operational until that validation is complete.
+The current Codex runtime has validated direct per-run model and reasoning configuration for Specialist executions. This behavior is version-sensitive; its evidence and limitations are recorded in [docs/validation/native-child-routing.md](../docs/validation/native-child-routing.md). This policy does not implement routing tooling.

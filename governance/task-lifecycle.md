@@ -74,7 +74,7 @@ Before execution, an Atomic Task must contain sufficient information for isolate
 - acceptance criteria;
 - dependencies;
 - relevant contracts or artifacts;
-- execution class.
+- execution configuration is selected by orchestration and normally remains separate from task content.
 
 An Atomic Task should be independently understandable without requiring reconstruction of the complete parent-workflow history.
 
@@ -96,7 +96,7 @@ No permanent agent role is created for this gate. It may initially use a fresh i
 
 After the Consistency Gate passes, Atomic Tasks become eligible for representation in the intended operational source of truth: GitHub Issues / GitHub Projects.
 
-GitHub MCP is not implemented yet. Issue fields, Project fields, templates, MCP commands, and implementation details are intentionally undefined.
+GitHub operational materialization follows [governance/github-workflow.md](github-workflow.md). GitHub MCP is the validated operational capability; concrete automation and command implementation remain outside this lifecycle policy.
 
 ## Implementation
 
@@ -118,9 +118,9 @@ Failures normally return to the implementing Repository Engineer for correction 
 
 ## Quality Evaluation
 
-When required by the Implementation Plan or governance, a Quality Engineer evaluates whether sufficient evidence shows that the implementation satisfies the specification and acceptance criteria.
+Quality Engineer involvement is on-demand. The Human Operator decides whether to request it after implementation is technically ready, as governed by [governance/testing-strategy.md](testing-strategy.md). When invoked, it evaluates whether sufficient evidence shows that the implementation satisfies the specification and acceptance criteria.
 
-The Quality Engineer may review acceptance coverage, inspect tests, identify missing scenarios and edge cases, add or request tests when appropriate, and produce a concise manual verification checklist when automation is not cost-effective. It must not fix production implementation code. Implementation defects return through the Lead Engineer to the responsible Repository Engineer.
+The Quality Engineer may review acceptance coverage, inspect tests, identify missing scenarios and edge cases, add or request tests when appropriate, and produce a concise manual verification checklist when the Human requests one. It must not fix production implementation code. Implementation defects return through the Lead Engineer to the responsible Repository Engineer.
 
 ## Manual Verification
 
@@ -160,7 +160,7 @@ The Lead Engineer determines whether the Atomic Task satisfies the Technical Spe
 
 Operational progress must not depend on Markdown checklists or repository files used as temporary task trackers. The intended source of truth is the external work-management system, initially GitHub Issues / GitHub Projects.
 
-This integration will later be accessed through approved GitHub tooling or MCP capabilities. GitHub integration is not implemented yet and must not be assumed to exist. This document defines intended behavior only.
+The validated GitHub MCP capability is used primarily by the Root Engineering Copilot under [governance/github-mcp.md](github-mcp.md). The approved representation is defined in [governance/github-workflow.md](github-workflow.md); this document does not implement it.
 
 ## Repository Memory vs Operational State
 
@@ -188,7 +188,7 @@ After an Atomic Task reaches technical completion, its operational state is pers
 - references to commits, pull requests, or artifacts;
 - the next eligible Atomic Task.
 
-The exact GitHub fields, Project configuration, Issue structure, and MCP commands are intentionally undefined.
+GitHub fields, hierarchy, and Project configuration are defined in [governance/github-workflow.md](github-workflow.md). MCP command and automation implementation remain outside this document.
 
 ## Mandatory Stop Between Atomic Tasks
 
@@ -196,7 +196,7 @@ Completion of one Atomic Task does not automatically authorize the next. The ini
 
 Atomic Task -> technical completion -> operational state update -> STOP
 
-The next Atomic Task may be identified as ready, but a new execution requires Human Operator authorization through the Root Engineering Copilot. This provides explicit control over token consumption, predictable execution cost, easy interruption and resumption, and controlled observation of the initial framework.
+The next Atomic Task may be identified as ready, but it does not start automatically. It requires authorization within the current approved Human scope through the Root Engineering Copilot. This provides explicit control over token consumption, predictable execution cost, easy interruption and resumption, and controlled observation of the initial framework.
 
 Future versions may introduce bounded automatic continuation, but it is disabled in the initial version.
 
@@ -234,7 +234,7 @@ The initial conceptual state vocabulary is intentionally small:
 - `TECHNICALLY_COMPLETE`;
 - `DONE`.
 
-The precise mapping of these states to GitHub Issues or GitHub Projects is intentionally undefined.
+The human-facing GitHub Project Status mapping is defined in [governance/github-workflow.md](github-workflow.md).
 
 ## Initial Lifecycle Summary
 

@@ -6,7 +6,7 @@ This architectural policy determines which responsibilities use Codex native cap
 
 Use:
 
-Native first -> Skills -> MCP -> thin deterministic tooling -> external framework only when it clearly adds value
+Native runtime and authoritative documentation -> explicit procedure routing -> MCP for authenticated external capabilities -> thin deterministic tooling when justified -> external framework only when it clearly adds value
 
 Do not create custom infrastructure merely because it is possible. Prefer reliable existing capabilities when they satisfy Agentic Engineering governance.
 
@@ -30,9 +30,7 @@ Repository instructions answer: “How should an agent work in this repository?�
 
 ## Skills
 
-Skills provide reusable knowledge, procedures, or capabilities across executions or repositories. Potential examples include Flyway, PostgreSQL, Strapi, Docker / Docker Compose, YARP, React / Next.js, React Native / Expo, and reusable security review procedures.
-
-A Skill answers: “How should this reusable capability or procedure be performed?” Repository instructions answer: “How does this specific repository work?” Avoid duplicating reusable procedures across many repository instruction files when a Skill is the better abstraction.
+Skills are optional, evidence-driven procedure or capability packages. Agentic Engineering v1 operates through authoritative documentation and explicit procedure routing without custom Skills by default. A Skill may be introduced only when it demonstrates benefit over that approach, as governed by [governance/skills-strategy.md](skills-strategy.md).
 
 ## MCP
 
@@ -42,9 +40,7 @@ Secure capability, never credentials. Agents must never receive, store, log, doc
 
 ### GitHub MCP Direction
 
-GitHub is intended to become the operational work-management source of truth for Issues, GitHub Projects, Pull Requests, repository references, operational task state, blockers, task completion, and next eligible work. Atomic Tasks derived from the approved Implementation Plan should eventually be materialized as GitHub work items.
-
-The exact mapping, Project fields, Issue structure, and MCP commands are deferred. GitHub MCP is not currently implemented and must not be assumed to exist.
+GitHub is the operational work-management source of truth for Issues, GitHub Projects, repository references, operational task state, blockers, task completion, and next eligible work. GitHub MCP is the validated authenticated capability used primarily by the Root Engineering Copilot. The approved workflow is defined in [governance/github-workflow.md](github-workflow.md); command and automation implementation remain deferred.
 
 ## Deterministic Custom Tooling
 
@@ -58,7 +54,7 @@ Execution telemetry is a strong candidate for deterministic tooling:
 
 Codex runtime -> usage data -> deterministic collector -> execution ledger -> reports
 
-Agents may read and summarize measured telemetry but must not invent or estimate token usage when measurable runtime data is unavailable. Implementation remains deferred until a technical spike validates what Codex exposes.
+Agents may read and summarize measured telemetry but must not invent or estimate token usage when measurable runtime data is unavailable. Runtime measurement has been validated; thin telemetry implementation remains deferred.
 
 ## Spec Kit
 
@@ -95,7 +91,7 @@ External tooling may help materialize this lifecycle but must not own or redefin
 |------|---------------------|
 | Reasoning, planning, implementation, evaluation | Codex Agent / Subagent |
 | Repository-specific instructions and memory | `AGENTS.md` + repository docs |
-| Reusable procedure or capability knowledge | Skill |
+| Reusable procedure or capability knowledge | Authoritative documentation and explicit routing; optional Skill only when justified |
 | Authenticated external system interaction | MCP |
 | Deterministic calculation, collection, or validation | Thin custom script/tool |
 | External SDD/process framework | Evaluate only if it adds proven value |
@@ -129,9 +125,7 @@ Prefer a thin compatibility layer over a new platform when possible.
 
 ## Technical Spikes
 
-Tooling assumptions that depend on runtime behavior are validated later through dedicated technical spikes. Relevant examples include isolated subagent behavior, nested delegation within the approved hierarchy, per-run model and reasoning configuration, routing reclassification, token accounting by Agent Run and Workflow Execution, persistence and resumption, GitHub MCP operations, and artifact/context retrieval.
-
-Unsupported runtime behavior must not be assumed merely because governance requires it.
+The initial runtime assumptions for isolated Agent Runs, nested delegation, per-run model and reasoning configuration, routing reclassification, Workflow Execution telemetry, and GitHub MCP operations have been validated through technical spikes. The evidence is version-sensitive and preserved under `docs/validation/`; any new or changed runtime assumption still requires validation before it is relied on.
 
 ## Initial V1 Stack
 
@@ -141,10 +135,10 @@ Agentic Engineering Governance
 + Codex native runtime
 + repository `AGENTS.md`
 + repository documentation
-+ Codex subagents
-+ Skills
++ explicit procedure routing
 + MCP
 + thin deterministic utilities where required
 
-Avoid a large custom orchestration codebase until operational evidence demonstrates the need.
+Custom Skills are optional and may initially be absent.
 
+Avoid a large custom orchestration codebase until operational evidence demonstrates the need.

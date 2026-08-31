@@ -26,7 +26,7 @@ Repository Memory answers: “How does this repository work and how should work 
 
 Information about current progress, including the active Product Requirement, current Atomic Task, task status, completed tasks, next eligible task, blockers, pending decisions, pull requests, and relevant commits.
 
-Operational Work State answers: “Where is the work currently stopped?” The intended source of truth is GitHub Issues / GitHub Projects. GitHub MCP integration is not implemented yet, and its mechanism is not defined here.
+Operational Work State answers: “Where is the work currently stopped?” The intended source of truth is GitHub Issues / GitHub Projects. GitHub MCP is the validated authenticated capability for this operational state; its approved workflow is defined in [governance/github-workflow.md](github-workflow.md).
 
 ## Execution Context Pack
 
@@ -151,7 +151,7 @@ A fresh Copilot or Lead Engineer session must reconstruct relevant state without
 
 Fresh session -> applicable governance -> operational state from GitHub -> relevant repository memory -> durable artifacts -> continue work
 
-The intended system should allow a fresh session to determine the active requirement, current or last completed task, next eligible task, blockers, required decisions, and relevant technical artifacts. GitHub integration details are defined later.
+The intended system should allow a fresh session to determine the active requirement, current or last completed task, next eligible task, blockers, required decisions, and relevant technical artifacts. GitHub operational representation is governed by [governance/github-workflow.md](github-workflow.md); implementation mechanics remain separate.
 
 ## Token Efficiency
 
@@ -175,4 +175,3 @@ More context is not automatically better context. The preferred context is the s
 ## Deferred Implementation Decisions
 
 This document does not decide the final specification directory structure, physical Execution Context Pack format, JSON/YAML schemas, MCP retrieval commands, automatic context injection, maximum context-token budgets, caching, automatic summaries, GitHub Project fields, GitHub Issue templates, or storage implementation.
-

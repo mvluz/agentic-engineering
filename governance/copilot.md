@@ -77,7 +77,7 @@ Conceptually:
 
 Human + Copilot -> Product Requirement -> Engineering Analysis -> Technical Specification -> Atomic Engineering Tasks -> Implementation -> Verification -> Independent Review -> Final Human Engineering Review
 
-The exact engineering roles and workflow are intentionally not defined yet.
+The approved hierarchy and lifecycle are defined in [governance/agent-architecture.md](agent-architecture.md), [governance/orchestration.md](orchestration.md), and [governance/task-lifecycle.md](task-lifecycle.md). The Copilot retrieves their applicable rules rather than redefining them here.
 
 ## Specialist Delegation
 

@@ -10,7 +10,7 @@ Operational state must never depend on conversational memory.
 
 ## Operational Source of Truth
 
-The intended operational source of truth is GitHub Issues / GitHub Projects. GitHub MCP has passed its initial technical validation and is the intended operational capability. The detailed GitHub workflow remains future work.
+The intended operational source of truth is GitHub Issues / GitHub Projects. GitHub MCP has passed technical validation and is the intended operational capability. The approved operational representation is governed by [governance/github-workflow.md](github-workflow.md).
 
 The distinction is:
 
@@ -26,7 +26,7 @@ Operational execution state begins after planning produces:
 
 Product Requirement -> Technical Specification -> Implementation Plan -> Atomic Tasks -> Consistency Gate PASS
 
-After the Consistency Gate succeeds, approved Atomic Tasks become eligible to be materialized as GitHub operational work. Their exact representation is defined later.
+After the Consistency Gate succeeds, approved Atomic Tasks become eligible to be materialized as GitHub operational work according to [governance/github-workflow.md](github-workflow.md).
 
 ## Minimum Checkpoint Contract
 

@@ -128,5 +128,4 @@ The agents must not spend reasoning effort calculating their own usage. The Copi
 
 This document defines what must be measured and why. It does not define how telemetry will be collected or stored.
 
-Implementation must be validated later through a technical spike that determines what token and usage information the current Codex runtime exposes for interactive sessions, subagents, isolated agent executions, retries, and complete Workflow Executions. Storage technologies, file formats, collection scripts, and telemetry implementation are intentionally undefined.
-
+The current Codex runtime's relevant usage and relationship data has been validated through a technical spike, with version-sensitive limitations recorded in [docs/validation/execution-telemetry.md](../docs/validation/execution-telemetry.md). Storage technologies, file formats, collection scripts, and telemetry implementation remain intentionally undefined.

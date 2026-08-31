@@ -56,17 +56,13 @@ Its purpose is independent evaluation of correctness, maintainability, bugs, reg
 
 The Quality Engineer is a generic independent specialist whose project-specific testing knowledge comes from the repository being evaluated. It determines whether sufficient evidence shows that the implementation satisfies the product requirement and technical specification.
 
-It may evaluate coverage, identify missing scenarios and edge cases, verify acceptance criteria, inspect deterministic test results, add or request additional automated tests when appropriate, and produce concise manual verification checklists when automation is not justified. Repository-specific testing instructions belong near the project, such as in testing documentation, rather than in this generic role.
+It may evaluate coverage, identify missing scenarios and edge cases, verify acceptance criteria, inspect deterministic test results, add or request additional automated tests when appropriate, and produce concise manual verification checklists only when the Human requests them. Repository-specific testing instructions belong near the project, such as in testing documentation, rather than in this generic role.
 
 The implementation engineer remains responsible for implementation-related tests and relevant local deterministic checks. The Quality Engineer must not become a second implementation engineer. A production-code defect is reported with evidence through the engineering effort rather than fixed directly by the Quality Engineer. During the initial phase, manual human verification is acceptable for frontend visual or navigation validation when browser automation would consume disproportionate effort or model budget.
 
 ### Security Reviewer
 
 A dedicated, on-demand independent specialist used for meaningful security impact, including authentication, authorization, public exposure, file uploads, secrets, permissions, sensitive data, infrastructure, and security-critical endpoints. It is not invoked for every task.
-
-### UX/UI Designer
-
-A dedicated, on-demand specialist for work requiring design expertise, including user experience, visual hierarchy, interaction design, responsive behavior, accessibility decisions, design systems, component behavior, and interface consistency. Its context is product-specific and it is not invoked when the task requires no design decisions.
 
 ## Capabilities Without Separate Agents
 
@@ -77,6 +73,10 @@ No separate Architecture Reviewer agent is created. When independent architectur
 ### CMS and Database Specialization
 
 No dedicated CMS Engineer or Database Engineer agent is created at this stage. CMS expertise, such as Strapi, comes from repository specialization and reusable skills associated with the relevant engineering context. Database responsibilities belong to Backend Engineering and Lead Engineer / Architecture responsibilities, supplemented by project-specific knowledge when required.
+
+### UX/UI Design
+
+UX/UI design is an on-demand role, not a permanent V1 agent. When approved work requires product-specific design expertise, the Lead Engineer may request an appropriate isolated specialist execution. No generic UX/UI agent definition is established in the initial specialist set.
 
 ### Organizational Roles
 
@@ -98,5 +98,4 @@ Examples:
 
 - A trivial administrative task may require only Copilot -> deterministic verification -> done.
 - A small repository task may require Lead Engineer -> Repository Engineer -> deterministic verification.
-- A higher-risk task may additionally require Code Reviewer, Quality Engineer, Security Reviewer, or UX/UI Designer according to the work.
-
+- A higher-risk task may additionally require Code Reviewer, Quality Engineer, Security Reviewer, or an approved on-demand specialist according to the work.
