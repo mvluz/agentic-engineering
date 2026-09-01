@@ -400,9 +400,9 @@ Map the unique constraint violation according to the API contract.
 
 ## Output Size Philosophy
 
-Use the minimum sufficient verbosity for the consumer. This document defines no hard numeric token limits, maximum output sizes, or quantitative efficiency thresholds. Those belong to a future Execution Budget Policy.
+Use the minimum sufficient verbosity for the consumer. This document defines no hard numeric token limits, maximum output sizes, or quantitative efficiency thresholds. Those are governed by [governance/execution-budget.md](execution-budget.md); quantitative limits remain deferred pending telemetry-informed baselines.
 
-Execution telemetry should later determine whether stricter output limits improve cost efficiency without harming engineering quality.
+Validated execution telemetry will inform whether stricter output limits improve cost efficiency without harming engineering quality.
 
 ## Relationship With Context Isolation
 

@@ -54,7 +54,7 @@ The initial lifecycle vocabulary is intentionally small:
 - `TECHNICALLY_COMPLETE`
 - `DONE`
 
-No additional states should be introduced unless a later GitHub Workflow design demonstrates a real requirement.
+No additional states should be introduced unless approved governance demonstrates a real requirement.
 
 Meaningful transitions include:
 
@@ -72,9 +72,11 @@ Evaluation requires correction -> `CHANGES_REQUIRED`
 
 Technical lifecycle requirements succeed -> `TECHNICALLY_COMPLETE`
 
-Operational evidence is persisted -> `DONE`
+Task operational state is persisted -> STOP boundary
 
-After `DONE`, identify the next eligible Atomic Task and STOP. The next task must not start automatically.
+Required Human review or approval of the technically converged delivery unit -> `DONE`
+
+After a Task's final state is persisted, identify the next eligible Atomic Task and STOP the current Agent Run. The Root Engineering Copilot may start that Task only when it remains within the current Human authorization and no Human Gate or blocker applies.
 
 ## State Update Responsibility
 
@@ -93,7 +95,7 @@ Operational state is a current-state checkpoint, not an execution diary. Do not 
 
 No next Atomic Task may start until the previous task's final operational state has been persisted successfully.
 
-Atomic Task -> technically complete -> persist evidence and final state -> `DONE` -> identify next eligible task -> STOP
+Atomic Task -> technically complete -> persist evidence and appropriate final operational state -> identify next eligible task -> STOP
 
 If operational state cannot be persisted safely, do not begin the next Atomic Task. Report the persistence problem through the normal hierarchy.
 
@@ -136,9 +138,11 @@ Do not silently execute tasks derived from an invalidated Plan. The exact repres
 
 ## Technical and Operational Completion
 
-`TECHNICALLY_COMPLETE` and `DONE` are distinct. The former means the Lead Engineer determined that required technical lifecycle conditions succeeded. The latter means the required operational evidence and state were also persisted successfully.
+`TECHNICALLY_COMPLETE` and `DONE` are distinct. `TECHNICALLY_COMPLETE` means the Lead Engineer determined that required technical lifecycle conditions succeeded. A Task's final operational state must be persisted before another Task begins. The Human-selected delivery unit - Task, User Story, or Feature - becomes `DONE` only after required Human review or approval.
 
-Technical lifecycle complete -> `TECHNICALLY_COMPLETE` -> persist operational evidence -> `DONE`
+Task technically complete -> persist Task operational state -> STOP boundary
+
+Delivery unit technically converged -> `TECHNICALLY_COMPLETE` -> Human review or approval -> `DONE`
 
 ## Blockers, Decisions, and Evidence
 
@@ -160,9 +164,9 @@ Checkpoint state should reference authoritative Technical Specifications, Implem
 
 ## Relationship With GitHub Workflow
 
-This document defines what operational state must survive. Future GitHub Workflow governance will define how that state is represented using GitHub Projects, Issues, relationships, statuses, labels where appropriate, Pull Request references, and MCP operations.
+This document defines what operational state must survive. [governance/github-workflow.md](github-workflow.md) defines the approved GitHub hierarchy, Project fields, and status mapping. This document does not duplicate that representation.
 
-It does not define Project fields, Issue templates, Issue hierarchy, labels, status mappings, Feature-to-Issue representation, concrete MCP commands, schemas, synchronization automation, or automatic recovery mechanisms.
+Concrete MCP commands, schemas, synchronization automation, automatic recovery mechanisms, Issue templates, and label usage remain outside this document.
 
 ## Relationship With Existing Governance
 

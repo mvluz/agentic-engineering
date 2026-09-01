@@ -171,9 +171,7 @@ Do not define yet:
 - concrete Skill locations;
 - mandatory documentation directories for every repository;
 - User Story identifier generation;
-- GitHub Issue hierarchy;
-- Project field mapping;
 - automated documentation validation;
 - automated stale-document detection.
 
-These belong to later implementation or governance stages.
+GitHub Issue hierarchy and Project field/status mapping are defined by [governance/github-workflow.md](github-workflow.md). The remaining decisions belong to later implementation or governance stages.

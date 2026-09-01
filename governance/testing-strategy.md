@@ -4,7 +4,7 @@ This document defines the initial testing responsibilities, deterministic verifi
 
 ## Core Principle
 
-Repository Engineers validate Atomic Tasks. The Human decides whether additional Feature-level Quality Engineering is required.
+Repository Engineers validate Atomic Tasks. The Human decides whether additional Quality Engineering is required at the selected delivery boundary.
 
 Testing responsibility is primarily part of engineering implementation. Quality Engineering is an optional capability in v1, not a mandatory stage for every Atomic Task or Feature.
 
@@ -47,7 +47,7 @@ The Quality Engineer must not silently take ownership of production implementati
 
 ## Human Validation Authority
 
-After Feature implementation is technically ready, the Human Operator decides the desired level of additional validation. The Human may approve directly, test personally, request Quality Engineer guidance, request Quality Engineer evaluation, or request additional automated or manual testing.
+After the Human-selected delivery unit - Task, User Story, or Feature - is technically ready, the Human Operator decides the desired level of additional validation. The Human may approve directly, test personally, request Quality Engineer guidance, request Quality Engineer evaluation, or request additional automated or manual testing.
 
 Do not automatically create a Human testing checklist or require a predefined testing ceremony. A checklist is produced only when the Human requests one, a Quality Engineer is explicitly asked to provide one, or another approved workflow requires one.
 
@@ -73,19 +73,21 @@ Automation must remain cost-aware. Automate when repeatability, risk, or expecte
 
 An Atomic Task may reach technical completion when its required implementation and deterministic validation obligations succeed. Quality Engineer participation is not required unless explicitly requested or required by another approved policy.
 
-Repository Engineer -> implementation -> relevant tests -> deterministic verification -> `TECHNICALLY_COMPLETE` -> operational state persistence -> `DONE` -> STOP
+Repository Engineer -> implementation -> relevant tests -> deterministic verification -> `TECHNICALLY_COMPLETE` -> operational state persistence -> STOP
+
+Selected delivery unit -> required Human review or approval -> `DONE`
 
 The existing Task Lifecycle and Execution State rules remain applicable.
 
-## Feature-Level Flow
+## Delivery-Boundary Flow
 
-When all planned Atomic Tasks for a Feature are complete:
+When the planned Atomic Tasks for the selected delivery unit are complete:
 
-Atomic Tasks complete -> Convergence Check -> Feature ready -> Human evaluation and optional testing -> Human approval -> deployment -> finalization
+Atomic Tasks complete -> Convergence Check when applicable -> delivery unit ready -> Human evaluation and optional testing -> Human approval -> deployment -> finalization
 
 The Convergence Check determines whether implementation satisfies the approved upstream engineering artifacts as a whole. Human validation represents the Human's chosen final evaluation. Quality Engineering provides optional additional expertise. These responsibilities must not be collapsed into a mandatory QA stage.
 
-The overall Feature is not finally complete merely because implementation tasks are technically complete. Human approval occurs before final deployment completion. Deployment mechanics and post-deployment verification are governed separately and are not implemented here.
+The selected delivery unit is not finally complete merely because implementation tasks are technically complete. Human approval occurs before final deployment completion. Deployment mechanics and post-deployment verification are governed separately and are not implemented here.
 
 ## Validation Failure
 
@@ -122,7 +124,7 @@ Detailed policies remain owned by those documents.
 13. Test quality matters more than test count.
 14. Prefer regression tests for real defects when practical.
 15. Testing automation remains cost-aware.
-16. Feature-level Human approval follows implementation and Convergence Check and precedes final deployment completion.
+16. Human approval at the selected delivery boundary follows implementation and applicable Convergence Check and precedes final deployment completion.
 
 ## Deferred Decisions
 

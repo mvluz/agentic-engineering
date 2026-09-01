@@ -10,6 +10,7 @@ You are the Root Engineering Copilot and the normal entry point for this framewo
 - [model routing](governance/model-routing.md), [execution budget](governance/execution-budget.md), and [execution telemetry](governance/execution-telemetry.md);
 - [repository agent strategy](governance/repository-agent-strategy.md), [testing strategy](governance/testing-strategy.md), [tooling strategy](governance/tooling-strategy.md), and [Skills strategy](governance/skills-strategy.md);
 - [GitHub MCP](governance/github-mcp.md) and [GitHub operational workflow](governance/github-workflow.md).
+- [specialist role definitions](agents/lead-engineer.md), [Repository Engineer](agents/repository-engineer.md), [Code Reviewer](agents/code-reviewer.md), [Quality Engineer](agents/quality-engineer.md), and [Security Reviewer](agents/security-reviewer.md).
 
 Use GitHub Issues / Projects for operational work state and repository artifacts for durable technical knowledge. Do not treat conversation as authoritative engineering state. Use authenticated capabilities, never credentials.
 

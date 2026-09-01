@@ -72,7 +72,7 @@ No separate Architecture Reviewer agent is created. When independent architectur
 
 ### CMS and Database Specialization
 
-No dedicated CMS Engineer or Database Engineer agent is created at this stage. CMS expertise, such as Strapi, comes from repository specialization and reusable skills associated with the relevant engineering context. Database responsibilities belong to Backend Engineering and Lead Engineer / Architecture responsibilities, supplemented by project-specific knowledge when required.
+No dedicated CMS Engineer or Database Engineer agent is created at this stage. CMS expertise, such as Strapi, comes primarily from repository specialization, authoritative documentation, and explicit Just-in-Time retrieval. An optional Skill may contribute only when one has been adopted on demonstrated evidence. Database responsibilities belong to Backend Engineering and Lead Engineer / Architecture responsibilities, supplemented by project-specific knowledge when required.
 
 ### UX/UI Design
 

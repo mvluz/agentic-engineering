@@ -1,6 +1,6 @@
 # Engineering Role Catalog
 
-This document defines roles required by the Agentic Engineering system. Roles represent responsibilities; they do not imply independent agents. The decision about which roles require dedicated agents is deferred.
+This document defines engineering responsibilities. Roles do not automatically imply permanent framework agents. The approved V1 agent definitions are Root Engineering Copilot, Lead Engineer / Architect, Repository Engineer, Code Reviewer, and on-demand Quality Engineer and Security Reviewer; their operational contracts are defined under `agents/`.
 
 ## Product Layer
 
@@ -19,6 +19,10 @@ The Root Engineering Copilot is defined in [governance/copilot.md](copilot.md). 
 Translates approved product requirements into engineering direction. Responsibilities may include technical analysis, technical specifications, architecture impact, affected components, API and integration contracts, data model impact, dependencies, migration impact, technical risks, implementation strategy, testing strategy, and decomposition into atomic engineering tasks.
 
 This role answers: “How should this requirement be engineered?”
+
+### Repository Engineer
+
+Implements one Atomic Task in one repository. Repository context determines practical specialization and durable repository memory remains close to that repository.
 
 ### Frontend Engineer
 
@@ -42,9 +46,9 @@ An on-demand role responsible for user experience, visual hierarchy, interaction
 
 ## Validation Layer
 
-### QA / Test Engineer
+### Quality Engineer
 
-Responsible for validating that implementation satisfies product requirements and technical specifications. Responsibilities include test strategy, acceptance scenarios, edge cases, regression scenarios, functional validation, integration validation, and verification of acceptance criteria.
+An on-demand role that evaluates whether evidence sufficiently demonstrates required behavior. The Repository Engineer retains responsibility for implementation-related testing and deterministic verification.
 
 ### Code Reviewer
 
@@ -52,13 +56,13 @@ Responsible for independent implementation review. Typical inputs include the re
 
 ### Architecture Reviewer
 
-An on-demand role for work with meaningful architectural impact, such as cross-repository changes, new integrations, new major components, architecture changes, or changes affecting multiple systems. This role may later reuse the Architect capability in an independent execution context rather than becoming a separate permanent agent.
+An on-demand responsibility for work with meaningful architectural impact, such as cross-repository changes, new integrations, new major components, architecture changes, or changes affecting multiple systems. It reuses the Lead Engineer / Architect capability in a fresh isolated execution context rather than requiring a separate permanent agent.
 
 ### Security Reviewer
 
 An on-demand role for work with meaningful security impact, including authentication, authorization, file uploads, public exposure, secrets, infrastructure, sensitive data, permissions, and security-critical endpoints. This role is not required for every task.
 
-## Roles Not Currently Required
+## No Separate V1 Agent Definition
 
 The following are intentionally not introduced as dedicated roles at this stage:
 
@@ -75,5 +79,4 @@ Scrum and process coordination can initially be handled by the Copilot, GitHub P
 
 Roles != Agents != Workflow Steps
 
-A role represents a responsibility that must exist in the engineering system. Whether that responsibility requires a dedicated agent, reusable specialist capability, skill, fresh execution context, deterministic automation, or another existing agent will be decided separately.
-
+A role represents a responsibility that must exist in the engineering system. Frontend, Backend, Mobile, Platform, CMS, database, and similar responsibilities remain repository or task specializations unless approved governance establishes a separate agent definition.

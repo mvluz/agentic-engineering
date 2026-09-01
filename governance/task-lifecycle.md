@@ -192,13 +192,13 @@ GitHub fields, hierarchy, and Project configuration are defined in [governance/g
 
 ## Mandatory Stop Between Atomic Tasks
 
-Completion of one Atomic Task does not automatically authorize the next. The initial lifecycle is:
+Every Atomic Task Agent Run ends at a mandatory boundary:
 
 Atomic Task -> technical completion -> operational state update -> STOP
 
-The next Atomic Task may be identified as ready, but it does not start automatically. It requires authorization within the current approved Human scope through the Root Engineering Copilot. This provides explicit control over token consumption, predictable execution cost, easy interruption and resumption, and controlled observation of the initial framework.
+The next Atomic Task may be identified as ready, but may start only after the prior Task's final operational state is persisted. The Root Engineering Copilot may continue when the current Human authorization covers the containing User Story or Feature. If only one Task was authorized, execution remains stopped for Human review. Mandatory Human Gates, blockers, and retry limits still stop continuation.
 
-Future versions may introduce bounded automatic continuation, but it is disabled in the initial version.
+This preserves explicit control over token consumption, predictable execution cost, easy interruption and resumption, and controlled observation of the initial framework without requiring redundant approval between Tasks already covered by the current Human authorization.
 
 ## Session Resumption
 
@@ -214,11 +214,11 @@ It uses current implementation evidence to determine whether required behavior i
 
 Its preferred result is `PASS`. If gaps remain, it returns `GAPS_FOUND` followed only by concise actionable findings. Real remaining work returns to the Lead Engineer, which determines required changes, creates or modifies Atomic Tasks as appropriate, updates operational state, and resumes sequential execution. No dedicated permanent agent role is created solely for convergence.
 
-## Feature Completion
+## Delivery-Boundary Completion
 
-When all Atomic Tasks in an Implementation Plan are technically complete and the Convergence Check passes, the Lead Engineer performs final technical consolidation of the feature or requirement, including when applicable implementation outcome, completed tasks, validation evidence, reviews, known risks, remaining limitations, and relevant technical artifacts.
+The Human-selected delivery and validation boundary may be one Task, a User Story, or a Feature. When the authorized boundary contains multiple Tasks, each Task completes and persists sequentially before the next begins. Completing an internal Task does not require a new Human approval while the larger authorized scope still permits continuation.
 
-The Lead Engineer returns this consolidated result to the Root Engineering Copilot. The Copilot presents it to the Human Operator, who acts as the Final Engineering Authority. Only after this final review may the overall feature or requirement be considered complete.
+When the delivery unit's technical work has converged, including the Convergence Check when applicable, the Lead Engineer determines it is `TECHNICALLY_COMPLETE` and returns the consolidated result to the Root Engineering Copilot. The delivery unit becomes `DONE` only after the required Human review or approval. For a single authorized Task, this review occurs after that Task's deterministic validation and technical completion.
 
 ## Initial Lifecycle States
 
@@ -240,10 +240,10 @@ The human-facing GitHub Project Status mapping is defined in [governance/github-
 
 Conceptually:
 
-Human + Copilot -> Product Requirement -> Requirement Quality / Clarification -> Lead Engineer -> Technical Specification -> Implementation Plan -> Atomic Tasks -> Consistency Gate -> publish operational work to GitHub -> authorize one Atomic Task -> Repository Engineer -> deterministic verification -> required independent evaluation -> correction loop when necessary -> TECHNICALLY_COMPLETE -> persist operational state -> STOP -> Human authorizes next Atomic Task
+Human + Copilot -> Product Requirement -> Requirement Quality / Clarification -> Lead Engineer -> Technical Specification -> Implementation Plan -> Atomic Tasks -> Consistency Gate -> publish operational work to GitHub -> authorize Task, User Story, or Feature -> sequential Repository Engineer Task runs -> deterministic verification -> required independent evaluation -> correction loop when necessary -> persist each Task state -> STOP boundary -> continue only within current authorized scope
 
 When all Atomic Tasks are complete:
 
-Convergence Check -> Lead final technical consolidation -> Root Engineering Copilot -> Human Final Engineering Review -> DONE
+Authorized delivery unit converges -> `TECHNICALLY_COMPLETE` -> Root Engineering Copilot -> Human review or approval -> `DONE`
 
 Agentic Engineering owns these lifecycle concepts independently. Spec Kit is not a dependency, and no Spec Kit commands or file conventions are introduced here.

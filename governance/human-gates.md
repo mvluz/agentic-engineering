@@ -18,6 +18,12 @@ A Specialist first attempts resolution using the approved task, specification, r
 
 Human approval is required when execution would materially change or exceed previously approved authority.
 
+### Authorization Scope
+
+The Human may authorize one Atomic Task, a complete User Story, or a complete Feature. Atomic Tasks remain isolated, sequential, individually bounded, and individually persisted before the next Task begins.
+
+Each Atomic Task Agent Run ends at a mandatory STOP boundary. STOP is an operational boundary, not automatically a new Human Gate. When the current authorization covers the containing User Story or Feature, the Root Engineering Copilot may start the next eligible Task after the prior Task's final operational state is persisted. When only one Task is authorized, execution stops for Human review after that Task.
+
 ### Product and Scope
 
 Require approval for meaningful Product Requirement changes, significant scope expansion, removal of behavior required by the approved requirement, materially different product behavior, or decisions that redefine the intended outcome.
@@ -92,11 +98,7 @@ Agents stop when the approved Atomic Task is complete. Completion means that all
 
 Agents must not expand scope because related improvements are discovered. Unrelated improvements may be reported separately.
 
-After technical completion:
-
-TECHNICALLY_COMPLETE -> update operational work state -> STOP
-
-The next Atomic Task requires separate authorization under the Task Lifecycle governance.
+After technical completion, the Agent Run stops and its operational state is persisted. The Root Engineering Copilot then determines whether the next eligible Task is within the current Human authorization, subject to all applicable Human Gates and blocker handling.
 
 ## Authority Boundaries
 
@@ -129,4 +131,3 @@ If the Lead Engineer can resolve the issue within its authority, it may replan, 
 Human Gates control consequential decisions; they do not require approval for normal engineering work. Termination Conditions prevent infinite retries, uncontrolled token consumption, blind model escalation, scope creep, and repeated work against external blockers.
 
 The system remains autonomous inside approved boundaries and deliberately stops when those boundaries are reached.
-

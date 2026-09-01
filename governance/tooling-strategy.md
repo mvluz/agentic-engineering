@@ -72,7 +72,7 @@ The initial system does not adopt as defaults:
 - `[P]` parallel task semantics;
 - repository Markdown checkboxes as operational work state;
 - implementing an entire task list in one run;
-- automatic continuation between Atomic Tasks;
+- continuation beyond the current Human authorization or required operational persistence boundary;
 - bypassing the Copilot / Lead / Specialist authority hierarchy.
 
 Agentic Engineering remains sequential in v1.
