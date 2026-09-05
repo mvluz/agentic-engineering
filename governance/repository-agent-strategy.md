@@ -61,6 +61,12 @@ The Repository Engineer resolves and confirms the target repository root, search
 
 GitHub Issues / Projects remain the operational source of truth for normal Product Work after materialization. Repository Onboarding does not require GitHub access or fake operational work; any GitHub operation requires an explicit Human request and the approved GitHub MCP capability.
 
+### Efficient Onboarding Discovery
+
+For onboarding, begin with the confirmed repository root, Git status, concise top-level structure, README, build or package metadata, key configuration, and durable documentation references. Inspect source only when needed to establish a durable fact for the initial `AGENTS.md`; bound discovery output and do not recursively inspect the repository merely for completeness.
+
+The Lead retrieves additional governance only when an actual decision, ambiguity, gate, security concern, routing question, or testing condition requires it. Lead validation starts from the generated `AGENTS.md`, Git diff and status, the bounded onboarding objective, and an evidence/reference summary; it inspects underlying repository evidence only for a questionable claim. The detailed context rules remain governed by [governance/context-artifact-strategy.md](context-artifact-strategy.md).
+
 ## .codex/
 
 `.codex/` is reserved for repository-specific Codex runtime configuration or resources when required. Potential future uses include repository-specific Codex configuration, local agent definitions, runtime behavior, Skills configuration, justified MCP configuration, and supported sandbox or approval behavior.

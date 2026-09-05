@@ -47,6 +47,12 @@ The execution context contains only what the agent needs to perform the work. Wh
 
 Optional context is included only when required, such as dependencies, allowed tools or authenticated capabilities, or known blockers. Do not expose orchestration metadata to an agent as ordinary task content.
 
+### Context Transfer
+
+A caller transfers the receiving agent's current objective, acceptance criteria, scope, authority, target repository when applicable, resolved decisions, exact authoritative references, relevant evidence, and expected output. It transfers conclusions and references rather than raw exploratory output, repeated artifacts, private reasoning, or full conversation history.
+
+Execution configuration remains in the orchestration layer. An agent executes under its assigned configuration and must not reread Model Routing merely to infer it. A receiving agent retrieves further detail only when needed; an independent evaluator verifies required claims from objective evidence.
+
 ## Expected Output Contract
 
 Every delegated execution explicitly states the expected output type. Explicit output contracts are preferred over vague instructions such as “Be concise.”

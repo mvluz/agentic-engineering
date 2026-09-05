@@ -64,6 +64,18 @@ minimum sufficient context -> legitimate information need -> targeted retrieval 
 
 Agents retrieve additional context only when relevant to the current task.
 
+### Conditional and Targeted Retrieval
+
+Just-in-Time retrieval is conditional. Retrieve a governance document, repository artifact, or additional evidence only when the current decision, explicit contract, ambiguity, gate, security concern, routing question, or testing condition requires it. Role applicability alone is not sufficient reason to read a complete document.
+
+Prefer a relevant heading, excerpt, reference, or bounded search over a complete large file or broad collection. A complete read remains appropriate when the whole document is small, the whole document is needed, or its internal relationships materially affect the decision. Do not repeat a read when its result remains active in the execution or is available in a concise handoff; repeat it only when the source changed, the prior read was incomplete, exact verification is required, or an independent evaluation needs to inspect the evidence itself.
+
+### Bounded Discovery and Execution
+
+Start unfamiliar repository work with bounded deterministic discovery: repository root, Git status, concise top-level structure, build or package metadata, and documentation references. Expand to source, generated output, dependency directories, large artifacts, or broad searches only to answer a concrete current question. Bound tool output and avoid unrestricted recursion or repeated large inspections.
+
+Batch safe low-risk discovery where practical. Model calls, delegations, and intermediate narration must serve a clear decision or required outcome; agents should not accumulate context through acknowledgements, status narration, or speculative exploration.
+
 ## Artifact-Based Continuity
 
 Continuity between Agent Runs comes from durable artifacts and structured handoffs, not private conversational memory:
@@ -73,6 +85,12 @@ Agent Run A -> useful artifacts and structured outcome -> run ends
 Agent Run B -> current task, relevant artifacts and findings -> fresh isolated context
 
 Run A's private reasoning and complete conversation are not propagated.
+
+### Parent-to-Child Context
+
+A parent provides a child the current objective, acceptance criteria, scope, authority, target repository, resolved decisions, exact authoritative references, relevant evidence, and expected output. It passes conclusions and references rather than raw exploratory tool output, duplicated artifacts, or execution narrative. The child retrieves further detail Just-in-Time.
+
+Execution configuration remains orchestration metadata. A child executes under its assigned configuration and must not reread Model Routing merely to infer that configuration. When independent verification is required, the child validates the relevant claim from objective evidence rather than trusting an unsupported parent conclusion.
 
 ### Reclassification Continuity
 
@@ -135,7 +153,7 @@ Only useful durable information survives through artifacts, decisions, evidence,
 
 ## Independent Evaluation Context
 
-Independent Quality Engineering and Code Review must not inherit an implementation agent's private conversation or subjective justification. They receive objective evidence such as the task, relevant specification, acceptance criteria, repository instructions, implementation artifacts, diff, tests, and deterministic validation evidence.
+Independent Quality Engineering and Code Review must not inherit an implementation agent's private conversation or subjective justification. They receive only the objective evidence needed for the evaluation: task scope, relevant specification excerpts, acceptance criteria, applicable repository rules, implementation artifacts or diff, tests, and deterministic validation evidence. They do not reload the complete repository or governance corpus unless a concrete finding requires it.
 
 This preserves independence and reduces confirmation bias.
 
@@ -155,7 +173,7 @@ The intended system should allow a fresh session to determine the active require
 
 ## Token Efficiency
 
-Context management is part of cost-aware engineering. Reduce unnecessary consumption by avoiding repeated large transfers, referencing artifacts rather than copying them, retrieving information only when needed, not forwarding private conversations, keeping Copilot context consolidated, and avoiding duplicated sources of truth.
+Context management is part of cost-aware engineering. Reduce unnecessary consumption by avoiding repeated large transfers, referencing artifacts rather than copying them, retrieving information only when needed, not forwarding private conversations, keeping Copilot context consolidated, and avoiding duplicated sources of truth. Execution telemetry distinguishes total input, cached input, and output; cached input may be priced differently, but repeated cached processing is still unnecessary context consumption.
 
 More context is not automatically better context. The preferred context is the smallest reliable context that enables correct execution.
 

@@ -11,7 +11,7 @@ Implement one assigned Atomic Task in one target repository, or author its first
 - Implement within the approved Technical Specification, Implementation Plan, task scope, contracts, acceptance criteria, and constraints.
 - Create or update implementation-related tests, run required deterministic checks, and correct in-scope deterministic failures.
 - Update durable repository memory only when the work changes durable technical truth; leave accurate documentation unchanged.
-- During Repository Onboarding only, use bounded Lead context, applicable governance, and direct repository evidence when no local `AGENTS.md` exists; create only that initial evidence-supported artifact.
+- During Repository Onboarding only, use bounded Lead context, applicable governance, and direct repository evidence when no local `AGENTS.md` exists; begin with bounded repository discovery and inspect source only for facts needed by that initial evidence-supported artifact.
 
 ## Boundary
 
@@ -19,7 +19,7 @@ Repository specialization comes from the target repository and task, not permane
 
 ## Required Context
 
-Receive the Atomic Task, relevant specification and plan references, acceptance criteria, repository instructions, contracts, constraints, validation requirements, and expected output. During explicit onboarding, receive the bounded onboarding objective and Lead context instead. Retrieve additional artifacts only when relevant.
+Receive the Atomic Task, relevant specification and plan references, acceptance criteria, repository instructions, contracts, constraints, validation requirements, resolved decisions, and expected output. During explicit onboarding, receive the bounded onboarding objective, Lead conclusions, and evidence references instead. Retrieve additional artifacts only when relevant.
 
 ## Expected Output
 
