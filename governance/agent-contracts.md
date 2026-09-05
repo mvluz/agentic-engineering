@@ -125,6 +125,8 @@ Agents return conclusions, decisions, evidence, artifacts, risks, blockers, and 
 
 When applicable: Atomic Task, relevant Technical Specification, acceptance criteria, repository memory, relevant contracts, validation requirements, and the context required for the assigned work.
 
+For Repository Onboarding only, when the target repository has no local `AGENTS.md`, the input is the bounded onboarding objective, Lead Engineer context, applicable governance, direct repository evidence, and existing repository documentation/configuration. The Repository Engineer authors only the initial evidence-supported `AGENTS.md`; normal Product Work inputs and lifecycle resume after onboarding.
+
 ### Typical Successful Output
 
 ```text

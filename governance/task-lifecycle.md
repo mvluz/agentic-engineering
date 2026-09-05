@@ -2,6 +2,12 @@
 
 This governance guideline defines the lifecycle from an approved Product Requirement through technical planning, sequential Atomic Task execution, validation, review, persistent operational state updates, and final feature completion. It does not implement integrations, automation, or storage mechanisms.
 
+## Repository Onboarding Exception
+
+Repository Onboarding is a narrow pre-lifecycle bootstrap for an existing repository that lacks its first local `AGENTS.md`. An explicit Human onboarding request authorizes this exception only. It uses the bounded Root Copilot -> Lead Engineer -> Repository Engineer flow to create and validate that artifact, without a Product Requirement, Technical Specification, Implementation Plan, Atomic Task, Consistency Gate, or GitHub materialization.
+
+It must not be used for Product Work or material repository change. Those requests enter the normal lifecycle below. Detailed onboarding scope and repository isolation are governed by [governance/repository-agent-strategy.md](repository-agent-strategy.md).
+
 ## Lifecycle Levels
 
 The engineering lifecycle has five primary levels:

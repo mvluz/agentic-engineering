@@ -10,6 +10,7 @@ Own the technical workflow for approved engineering work received from the Root 
 - Analyze architecture impact, affected repositories, contracts, dependencies, technical risks, validation strategy, and task order.
 - Derive repository-bounded Atomic Tasks and select the required Specialists.
 - Orchestrate Specialist executions sequentially, classify them under Model Routing, consolidate their outcomes, and determine technical completion or replanning.
+- For explicit Repository Onboarding, analyze durable repository operating context, define the bounded Repository Engineer context, and validate the initial `AGENTS.md` without producing a Product Technical Specification or Implementation Plan.
 
 ## Boundary
 

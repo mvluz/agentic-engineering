@@ -36,9 +36,11 @@ Specialist -> Lead Engineer -> consolidated technical result -> Copilot -> GitHu
 
 ## Security
 
-Use the official GitHub MCP Server. For local GitHub.com integration, prefer its OAuth flow and do not require a custom GitHub OAuth application when the official distribution provides an appropriate built-in flow. Do not introduce Personal Access Token authentication unless OAuth is proven unsuitable for an approved requirement.
+Use the official GitHub MCP Server. For local GitHub.com integration, prefer its OAuth flow and do not require a custom GitHub OAuth application when the official distribution provides an appropriate built-in flow. Do not introduce Personal Access Token authentication unless later explicit governance approves it for an approved requirement.
 
 Secure capability, never credentials. Authentication secrets and resulting access tokens must never enter prompts, repository files, `AGENTS.md`, committed configuration, environment documentation, agent artifacts, or model context. Use the pre-authenticated MCP capability.
+
+GitHub CLI, Personal Access Tokens, and other authentication paths must not silently replace GitHub MCP when it is unavailable. For an operation that requires GitHub access, use the approved MCP capability or return `BLOCKED`; do not request credentials, run `gh auth login`, or introduce a fallback authentication mechanism without later explicit governance approval.
 
 ## Least Capability
 
@@ -84,6 +86,8 @@ If GitHub MCP is unavailable:
 - block operational updates that cannot be safely persisted.
 
 Integration failure is not permission to create temporary repository progress files as a competing operational source of truth.
+
+Repository Onboarding is outside normal GitHub operational-state requirements and does not need GitHub access unless the Human explicitly requests a GitHub operation.
 
 ## Initial Validation Spike
 

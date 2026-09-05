@@ -43,6 +43,24 @@ Typical content includes the repository purpose, a concise architecture summary,
 
 `AGENTS.md` must not contain current task status, next-task or roadmap state, GitHub Project state, execution telemetry, token usage, execution cost, conversational history, credentials, secrets, machine-specific configuration, large duplicated architecture documentation, or global Agentic Engineering governance.
 
+## Repository Onboarding
+
+Repository Onboarding is a narrow bootstrap exception before normal Product Work. An explicit Human request authorizes the Root Engineering Copilot to coordinate onboarding of one existing repository so it can receive its first repository-local `AGENTS.md`.
+
+The flow is:
+
+Human requests onboarding -> Root Engineering Copilot coordinates -> Lead Engineer analyzes repository context -> Repository Engineer creates initial `AGENTS.md` -> Lead validates and consolidates -> Root Copilot reports to Human
+
+This bootstrap does not require a Product Requirement, Technical Specification, Implementation Plan, Atomic Task, Consistency Gate, GitHub Issue, GitHub Project item, or work hierarchy. Normal Product Work begins only after onboarding when a Product Requirement is requested.
+
+The default permitted mutation is `<target-repository>/AGENTS.md`. The assigned Repository Engineer may inspect the target repository read-only, including its Git state, structure, source, configuration, tests, CI, documentation, architecture evidence, and local conventions. The resulting `AGENTS.md` contains only durable repository-specific operating knowledge supported by that evidence.
+
+Onboarding must not modify application code, dependencies, CI, infrastructure, tests, or existing documentation unless the Human explicitly authorizes expanded scope. If inspection identifies a material product, architecture, security, infrastructure, dependency, destructive, or significant process change, stop and escalate it to the Root Copilot for normal Product Lifecycle handling.
+
+The Repository Engineer resolves and confirms the target repository root, searches and mutates only within it, and never modifies the Agentic Engineering framework repository while onboarding another repository. The Root may coordinate across repositories, but each child execution remains repository-bounded.
+
+GitHub Issues / Projects remain the operational source of truth for normal Product Work after materialization. Repository Onboarding does not require GitHub access or fake operational work; any GitHub operation requires an explicit Human request and the approved GitHub MCP capability.
+
 ## .codex/
 
 `.codex/` is reserved for repository-specific Codex runtime configuration or resources when required. Potential future uses include repository-specific Codex configuration, local agent definitions, runtime behavior, Skills configuration, justified MCP configuration, and supported sandbox or approval behavior.
@@ -70,7 +88,7 @@ Work folders preserve durable engineering knowledge; they do not track current e
 
 ## Planning and Operational State
 
-The approved derivation model remains:
+For normal Product Work, the approved derivation model remains:
 
 Product Requirement -> Technical Specification -> Implementation Plan -> Atomic Tasks
 
@@ -83,11 +101,11 @@ The distinction is:
 
 ## Repository Engineer Creation
 
-A Repository Engineer is an isolated Specialist execution created by the Lead Engineer for work in one repository:
+A Repository Engineer is an isolated Specialist execution created by the Lead Engineer for work in one repository. For normal Product Work:
 
 Lead Engineer -> identifies the responsible repository -> launches Repository Engineer -> repository instructions apply -> relevant context is retrieved -> Atomic Task is executed
 
-The Repository Engineer becomes specialized through `AGENTS.md`, applicable `.codex/` resources, relevant documentation, `docs/works/<work-id>/` artifacts, current source code, and the Atomic Task Execution Context Pack. A global implementation agent must not permanently carry detailed knowledge of every repository.
+The Repository Engineer becomes specialized through `AGENTS.md`, applicable `.codex/` resources, relevant documentation, `docs/works/<work-id>/` artifacts, current source code, and the Atomic Task Execution Context Pack. During Repository Onboarding only, when no local `AGENTS.md` exists, it instead uses the bounded Lead context, applicable governance, direct repository evidence, and existing documentation/configuration to author the first one. A global implementation agent must not permanently carry detailed knowledge of every repository.
 
 ## Technology Specialization
 
@@ -129,7 +147,7 @@ Not every task requires documentation changes. If durable documentation remains 
 
 ## Context Loading
 
-Repository Engineers must not automatically load all repository documentation. The expected flow is:
+For normal Product Work, Repository Engineers must not automatically load all repository documentation. The expected flow is:
 
 Repository Engineer starts -> receives `AGENTS.md` -> identifies authoritative references -> retrieves task-required documentation -> retrieves further context Just-in-Time when necessary
 

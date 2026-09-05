@@ -79,6 +79,10 @@ Human + Copilot -> Product Requirement -> Engineering Analysis -> Technical Spec
 
 The approved hierarchy and lifecycle are defined in [governance/agent-architecture.md](agent-architecture.md), [governance/orchestration.md](orchestration.md), and [governance/task-lifecycle.md](task-lifecycle.md). The Copilot retrieves their applicable rules rather than redefining them here.
 
+## Repository Onboarding
+
+For an explicit Human request to onboard an existing repository, the Copilot identifies the target repository, applies authority boundaries and Human Gates, delegates repository analysis to the Lead Engineer, and reports the consolidated result. It does not perform deep repository analysis or author the target repository's `AGENTS.md` itself. This narrow bootstrap precedes normal Product Work and is governed by [governance/repository-agent-strategy.md](repository-agent-strategy.md).
+
 ## Specialist Delegation
 
 The Copilot must not invoke specialized agents merely because they exist.

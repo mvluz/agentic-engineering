@@ -40,7 +40,7 @@ Secure capability, never credentials. Agents must never receive, store, log, doc
 
 ### GitHub MCP Direction
 
-GitHub is the operational work-management source of truth for Issues, GitHub Projects, repository references, operational task state, blockers, task completion, and next eligible work. GitHub MCP is the validated authenticated capability used primarily by the Root Engineering Copilot. The approved workflow is defined in [governance/github-workflow.md](github-workflow.md); command and automation implementation remain deferred.
+GitHub is the operational work-management source of truth for Issues, GitHub Projects, repository references, operational task state, blockers, task completion, and next eligible work. GitHub MCP is the validated authenticated capability used primarily by the Root Engineering Copilot. The approved workflow is defined in [governance/github-workflow.md](github-workflow.md); command and automation implementation remain deferred. GitHub CLI or another authentication path must not silently substitute for unavailable GitHub MCP.
 
 ## Deterministic Custom Tooling
 
